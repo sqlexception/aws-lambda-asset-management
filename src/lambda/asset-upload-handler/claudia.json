@@ -1,0 +1,7 @@
+{
+  "lambda": {
+    "role": "cdn-upload-executor",
+    "name": "cdn-upload",
+    "region": "eu-central-1"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "Records": [
+    {
+      "cf": {
+        "config": {
+          "distributionDomainName": "d1a9zc3cl7oxz9.cloudfront.net",
+          "distributionId": "E14JFW7WB8LCF1",
+          "eventType": "origin-response"
+        },
+        "request": {
+          "clientIp": "2a01:598:9988:6cdf:7112:1875:485a:bd1b",
+          "headers": {
+            "x-forwarded-for": [
+              {
+                "key": "X-Forwarded-For",
+                "value": "2a01:598:9988:6cdf:7112:1875:485a:bd1b"
+              }
+            ],
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "Amazon CloudFront"
+              }
+            ],
+            "via": [
+              {
+                "key": "Via",
+                "value": "2.0 3095e870e1a1a1b03178e40ab1872de5.cloudfront.net (CloudFront)"
+              }
+            ],
+            "accept-encoding": [
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br"
+              }
+            ],
+            "host": [
+              {
+                "key": "Host",
+                "value": "assets.valmano.com.s3.amazonaws.com"
+              }
+            ]
+          },
+          "method": "HEAD",
+          "origin": {
+            "s3": {
+              "authMethod": "none",
+              "customHeaders": {},
+              "domainName": "assets.valmano.com.s3.amazonaws.com",
+              "path": ""
+            }
+          },
+          "querystring": "",
+          "uri": "/styles.css"
+        },
+        "response": {
+          "headers": {
+            "x-amz-id-2": [
+              {
+                "key": "x-amz-id-2",
+                "value": "5AKE/exCdZfAHF5NES0gLsBS/5HP2PURcnEpt3gvYsUC95sqWdZVAUln/XOJkqHvW/4v01wL9OM="
+              }
+            ],
+            "x-amz-request-id": [
+              {
+                "key": "x-amz-request-id",
+                "value": "FCE72758760BDA34"
+              }
+            ],
+            "date": [
+              {
+                "key": "Date",
+                "value": "Thu, 26 Dec 2019 18:38:51 GMT"
+              }
+            ],
+            "last-modified": [
+              {
+                "key": "Last-Modified",
+                "value": "Wed, 25 Dec 2019 22:14:33 GMT"
+              }
+            ],
+            "etag": [
+              {
+                "key": "ETag",
+                "value": "\"81e1867999f72c4e1b891f292885f2bb\""
+              }
+            ],
+            "accept-ranges": [
+              {
+                "key": "Accept-Ranges",
+                "value": "bytes"
+              }
+            ],
+            "server": [
+              {
+                "key": "Server",
+                "value": "AmazonS3"
+              }
+            ],
+            "content-type": [
+              {
+                "key": "Content-Type",
+                "value": "text/css"
+              }
+            ],
+            "content-length": [
+              {
+                "key": "Content-Length",
+                "value": "195395"
+              }
+            ]
+          },
+          "status": "200",
+          "statusDescription": "OK"
+        }
+      }
+    }
+  ]
+}
