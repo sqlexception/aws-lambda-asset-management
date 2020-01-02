@@ -48,7 +48,7 @@ class S3FileSystem {
             Bucket: image.bucketName,
             Key: image.fileName,
             Body: image.data,
-            Metadata: Object.assign({}, image.headers.Metadata, {"img-processed": "true"}),
+            Metadata: Object.assign({}, image.headers.Metadata, {"cdn-processed": "true"}),
             ContentType: image.headers.ContentType,
             CacheControl: (options.cacheControl !== undefined) ? options.cacheControl : image.headers.CacheControl,
             ACL: image.acl || "private"
