@@ -12,25 +12,26 @@ class S3FileSystem {
     /**
      * Get object data from S3 bucket
      *
-     * @param String bucket
-     * @param String key
      * @return Promise
+     * @param {string} bucket
+     * @param {string} key
      */
     getObject(bucket, key) {
         return new Promise((resolve, reject) => {
             console.log("Downloading: " + key);
             key = decodeURIComponent(key.replace(/\+/g, ' '));
-            this.client.getObject({Bucket: bucket, Key: key}).promise().then((data) => {
-                if (data.ContentLength <= 0) {
-                    reject("Empty file or directory.");
-                } else {
-                    resolve(new FileData(
-                        key,
-                        bucket,
-                        data.Body,
-                        {ContentType: data.ContentType, CacheControl: data.CacheControl, Metadata: data.Metadata}
-                    ));
-                }
+            this.client.getObject({Bucket: bucket, Key: key}).promise()
+                .then((data) => {
+                    if (data.ContentLength <= 0) {
+                        reject("Empty file or directory.");
+                    } else {
+                        resolve(new FileData(
+                            key,
+                            bucket,
+                            data.Body,
+                            {ContentType: data.ContentType, CacheControl: data.CacheControl, Metadata: data.Metadata}
+                        ));
+                    }
             }).catch((err) => {
                 reject("S3 getObject failed: " + err);
             });

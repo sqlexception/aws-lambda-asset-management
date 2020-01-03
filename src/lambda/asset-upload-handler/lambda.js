@@ -6,7 +6,7 @@ const zlib = require('zlib');
 const gzip = zlib.gzip;
 const gzipOptions = {
     level: 9
-}
+};
 const brotli = zlib.brotliCompress;
 const brotliOptions = {
     mode: 0,
@@ -18,7 +18,27 @@ const brotliOptions = {
     greedy_block_split: false,
     enable_context_modeling: false
 };
-
+const compressFileExtensions = ['js', 'css', 'html', 'json', 'ico', 'eot', 'otf', 'ttf'];
+const compressContentTypes = [
+    'text/html',
+    'application/x-javascript',
+    'text/css',
+    'application/javascript',
+    'text/javascript',
+    'text/plain',
+    'text/xml',
+    'application/json',
+    'application/vnd.ms-fontobject',
+    'application/x-font-opentype',
+    'application/x-font-truetype',
+    'application/x-font-ttf',
+    'application/xml',
+    'font/eot',
+    'font/opentype',
+    'font/otf',
+    'image/svg+xml',
+    'image/vnd.microsoft.icon'
+];
 const compressTypes = {
     xml: "text/xml",
     svg: "image/svg+xml",
@@ -40,16 +60,20 @@ const s3 = new AWS.S3();
 // Lambda Handler
 exports.handler = (event, context, callback) => {
     try {
-        let s3Object = eventParser(event, context);
+        let eventObject = eventParser(event, context);
+        let srcFile = io.getObject(eventObject.bucket.name, eventObject.object.key)
+            .then(file => {
+                console.log(eventObject, srcFile);
+            });
         //let srcFile = io.getObject(eventRecord.bucket.name, eventRecord.object.key).catch(error => {
         //    throw error;
         //});
-        console.log(s3Object);
+        console.log("-------------------");
         // Download the image from S3, transform, and upload to a different S3 bucket.
         async.waterfall([
                 function download(callback) {
                     console.log('Download the image from S3 into a buffer...');
-                    io.getObject(s3Object.bucket.name, s3Object.object.key)
+                    io.getObject(eventObject.bucket.name, eventObject.object.key)
                         .then((file) => {
                             console.log('Downloaded file "' + file.fileName + '" with mime type: "' + file.type.mime + '.');
                             callback(null, file)
