@@ -31,7 +31,7 @@
     "path-template": "0.0.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.596.0",
+    "aws-sdk": "^2.814.0",
     "claudia": "^5.11.0",
     "node-lambda": "^0.14.0",
     "eslint": "^4.18.2"
